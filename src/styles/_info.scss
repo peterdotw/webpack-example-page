@@ -1,0 +1,25 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background: pink;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-title {
+  font-size: 2.5em;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .info {
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .info-title {
+    font-size: 8em;
+  }
+}

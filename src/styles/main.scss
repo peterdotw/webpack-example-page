@@ -1,0 +1,24 @@
+@import "navbar";
+@import "landing";
+@import "info";
+@import "footer";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+  overflow: hidden;
+}
