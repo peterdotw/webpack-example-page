@@ -58,11 +58,12 @@ module.exports = {
         test: /\.html$/,
         loader: "html-loader",
         options: {
-          minimize: true
+          minimize: true,
+          attrs: ["img:src", ":srcset"]
         }
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg|webp)$/,
         use: [
           {
             loader: "file-loader",
