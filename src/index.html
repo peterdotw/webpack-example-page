@@ -26,11 +26,15 @@
     <div class="container">
       <section class="landing">
         <h1 class="landing-title">Floral Shoppe</h1>
-        <img
-          class="landing-image"
-          alt="Floral Shoppe Cover"
-          src="../src/img/macminus.webp"
-        />
+        <picture class="landing-image-container">
+          <source srcset="../src/img/macminus.webp" type="image/webp" />
+          <source srcset="../src/img/macminus.jpg" type="image/jpeg" />
+          <img
+            class="landing-image"
+            alt="Floral Shoppe Cover"
+            src="../src/img/macminus.jpg"
+          />
+        </picture>
       </section>
 
       <section class="info">
