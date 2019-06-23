@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { GenerateSW } = require("workbox-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -21,7 +22,8 @@ module.exports = {
       filename: "[name].[hash].css",
       chunkFilename: "[id].[hash].css"
     }),
-    new CompressionPlugin()
+    new CompressionPlugin(),
+    new GenerateSW()
   ],
   module: {
     rules: [
