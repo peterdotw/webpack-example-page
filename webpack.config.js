@@ -3,7 +3,6 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
-const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 const path = require("path");
 
 module.exports = {
@@ -23,8 +22,7 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css"
     }),
-    new CompressionPlugin(),
-    new ImageminWebpWebpackPlugin()
+    new CompressionPlugin()
   ],
   module: {
     rules: [
@@ -77,13 +75,16 @@ module.exports = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 75
               },
               optipng: {
                 enabled: false
               },
               pngquant: {
                 enabled: false
+              },
+              webp: {
+                quality: 75
               }
             }
           }
