@@ -3,24 +3,23 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "./build"),
-    filename: "bundle.js"
-  },
-  optimization: {
-    minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})]
+    filename: "[name].[contenthash].js"
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html"
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
+      filename: "[name].[hash].css",
+      chunkFilename: "[id].[hash].css"
     }),
     new CompressionPlugin()
   ],
@@ -92,5 +91,9 @@ module.exports = {
       }
     ]
   },
-  mode: "production"
+  mode: "production",
+  optimization: {
+    minimizer: [new TerserPlugin({}), new OptimizeCssAssetsPlugin({})],
+    runtimeChunk: "single"
+  }
 };
