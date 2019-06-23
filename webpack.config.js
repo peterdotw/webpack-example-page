@@ -23,7 +23,21 @@ module.exports = {
       chunkFilename: "[id].[hash].css"
     }),
     new CompressionPlugin(),
-    new GenerateSW()
+    new GenerateSW({
+      exclude: [/\.(?:png|jpg|jpeg|svg|webp)$/],
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|webp)$/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "images",
+            expiration: {
+              maxAgeSeconds: 86400
+            }
+          }
+        }
+      ]
+    })
   ],
   module: {
     rules: [
